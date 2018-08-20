@@ -6,3 +6,14 @@ Inspired by
 * Railway Oriented Programming 
 * Specification Pattern
 
+# Example
+
+      Result.resultFor(DomainEntity.class)
+            .combine(result1, result2)
+            .ensure(() -> new SpecicationImpl().isSatisfied(), "some error message")
+            .ensure(() -> new SpecicationImpl().isSatisfied(), "some error message")
+            .validateAll(
+                    Validation.of(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
+                    Validation.of(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
+                    Validation.of(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue))
+            .onSuccess(() -> new DomainEntity());
