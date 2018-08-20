@@ -13,7 +13,7 @@ Inspired by
             .ensure(() -> new SpecicationImpl().isSatisfied(), "some error message")
             .ensure(() -> new SpecicationImpl().isSatisfied(), "some error message")
             .validateAll(
-                    Validation.of(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
-                    Validation.of(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
-                    Validation.of(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue))
+                    validate(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
+                    validate(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
+                    validate(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue))
             .onSuccess(() -> new DomainEntity());

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static com.github.tddiaz.ddd.result.Result.HasNoSuccessValueException;
 import static com.github.tddiaz.ddd.result.Result.Validation;
+import static com.github.tddiaz.ddd.result.Result.Validation.validate;
 import static com.github.tddiaz.ddd.result.Result.as;
 import static com.github.tddiaz.ddd.result.Result.resultFor;
 import static org.hamcrest.Matchers.allOf;
@@ -68,8 +69,8 @@ public class ResultTest {
     public void givenValidations_whenValidateAllAndHasFailures_shouldReturnErrors() {
         Result<DomainEntity> result = resultFor(DomainEntity.class)
                 .validateAll(
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "error1", "actualValue1"),
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "error2", "actualValue2")
+                        validate(() -> new FailedSpecification().isSatisfied(), "error1", "actualValue1"),
+                        validate(() -> new FailedSpecification().isSatisfied(), "error2", "actualValue2")
                 );
 
         assertTrue(result.hasErrors());
@@ -87,7 +88,7 @@ public class ResultTest {
         Result<DomainEntity> result = resultFor(DomainEntity.class)
                 .ensure(() -> new FailedSpecification().isSatisfied(), "ensure failed")
                 .validateAll(
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed")
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed")
                 );
 
         assertTrue(result.hasErrors());
@@ -102,8 +103,8 @@ public class ResultTest {
                 .ensure(() -> new SuccessSpecification().isSatisfied(), "ensure failed")
                 .ensure(() -> new SuccessSpecification().isSatisfied(), "ensure failed")
                 .validateAll(
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed"),
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed")
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed"),
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed")
                 );
 
         assertTrue(result.hasErrors());
@@ -115,14 +116,14 @@ public class ResultTest {
 
         Result<DomainEntity> result1 = Result.resultFor(DomainEntity.class)
                 .validateAll(
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed"),
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed")
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed"),
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed")
                 );
 
         Result<DomainEntity> result2 = Result.resultFor(DomainEntity.class)
                 .validateAll(
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed"),
-                        Validation.of(() -> new FailedSpecification().isSatisfied(), "validation failed")
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed"),
+                        validate(() -> new FailedSpecification().isSatisfied(), "validation failed")
                 );
 
         Result<DomainEntity> domainEntityResult = Result.resultFor(DomainEntity.class)
@@ -139,7 +140,7 @@ public class ResultTest {
         Result<DomainEntity> domainEntityResult = Result.resultFor(DomainEntity.class)
                 .ensure(() -> new SuccessSpecification().isSatisfied(), "")
                 .validateAll(
-                        Validation.of(() -> new SuccessSpecification().isSatisfied(), ""))
+                        validate(() -> new SuccessSpecification().isSatisfied(), ""))
                 .onSuccess(() -> new DomainEntity());
 
         assertFalse(domainEntityResult.hasErrors());

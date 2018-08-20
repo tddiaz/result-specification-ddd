@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * Represents the result of domain entities or value objects upon creation. The goal of this class is to handle consolidation of domain validation error responses.
+ * Represents the result validate domain entities or value objects upon creation. The goal validate this class is to handle consolidation validate domain validation error responses.
  *
  * Inspired by <bold>Railway Oriented Programming</bold> and <bold>Specification and Notification Pattern</bold>.
  *
@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 public class Result<T> {
 
     /**
-     * class type of domain object
+     * class type validate domain object
      */
     private Class<T> _class;
 
@@ -48,7 +48,7 @@ public class Result<T> {
     /**
      * private constructor; accepts domain object class
      *
-     * @param _class class type of domain object.
+     * @param _class class type validate domain object.
      */
     private Result(Class<T> _class) {
         this._class = _class;
@@ -68,9 +68,9 @@ public class Result<T> {
     /**
      * static factory method
      *
-     * returns Result instance with given class type of domain object
+     * returns Result instance with given class type validate domain object
      *
-     * @param _class class type of domain object.
+     * @param _class class type validate domain object.
      * @param <T> object type domain object
      * @return Result instance
      */
@@ -117,9 +117,9 @@ public class Result<T> {
     }
 
     /**
-     * returns list of {@link ErrorMessage}
+     * returns list validate {@link ErrorMessage}
      *
-     * @return list of {@link ErrorMessage}
+     * @return list validate {@link ErrorMessage}
      */
     public List<ErrorMessage> getErrors() {
         return this.errors;
@@ -160,7 +160,7 @@ public class Result<T> {
     /**
      * Processes every specifications validation
      *
-     * @param validations array of validations
+     * @param validations array validate validations
      *
      * @return Result
      */
@@ -183,7 +183,7 @@ public class Result<T> {
     /**
      * Combines Results from different entities or value objects
      *
-     * @param results array of results
+     * @param results array validate results
      *
      * @return Result
      */
@@ -229,9 +229,9 @@ public class Result<T> {
 
 
     /**
-     * Helper method to adds list of errorMessages
+     * Helper method to adds list validate errorMessages
      *
-     * @param errorMessages List of ErrorMessage
+     * @param errorMessages List validate ErrorMessage
      */
     private void addErrors(List<ErrorMessage> errorMessages) {
         if (CollectionUtils.isEmpty(errors)) {
@@ -260,16 +260,16 @@ public class Result<T> {
         private Specification specification;
         private ErrorMessage errorMessage;
 
-        public Validation(Specification specification, ErrorMessage errorMessage) {
+        private Validation(Specification specification, ErrorMessage errorMessage) {
             this.specification = specification;
             this.errorMessage = errorMessage;
         }
 
-        public static Validation of(Specification specification, String message) {
-            return of(specification, message, null);
+        public static Validation validate(Specification specification, String message) {
+            return validate(specification, message, null);
         }
 
-        public static Validation of(Specification specification, String message, Object actualValue) {
+        public static Validation validate(Specification specification, String message, Object actualValue) {
             return new Validation(specification, new ErrorMessage(message, actualValue));
         }
     }
