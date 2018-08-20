@@ -4,7 +4,6 @@ import com.github.tddiaz.ddd.specification.Specification;
 import org.junit.Test;
 
 import static com.github.tddiaz.ddd.result.Result.HasNoSuccessValueException;
-import static com.github.tddiaz.ddd.result.Result.Validation;
 import static com.github.tddiaz.ddd.result.Result.Validation.validate;
 import static com.github.tddiaz.ddd.result.Result.as;
 import static com.github.tddiaz.ddd.result.Result.resultFor;
