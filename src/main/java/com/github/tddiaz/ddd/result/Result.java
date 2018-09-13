@@ -9,7 +9,8 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
- * Represents the result validate domain entities or value objects upon creation. The goal validate this class is to handle consolidation validate domain validation error responses.
+ * Represents the result of validated domain entities or value objects.
+ * The goal of this class is to handle consolidation of domain validation error responses.
  *
  * Inspired by <bold>Railway Oriented Programming</bold> and <bold>Specification and Notification Pattern</bold>.
  *
@@ -92,6 +93,7 @@ public class Result<T> {
         return new Result<>(value);
     }
 
+
     /**
      * to confirm Result with errors
      *
@@ -100,6 +102,7 @@ public class Result<T> {
     public boolean hasErrors() {
         return CollectionUtils.isNotEmpty(this.errors);
     }
+
 
     /**
      * returns domain object
@@ -116,6 +119,8 @@ public class Result<T> {
         return this.value;
     }
 
+
+
     /**
      * returns list validate {@link ErrorMessage}
      *
@@ -125,12 +130,15 @@ public class Result<T> {
         return this.errors;
     }
 
+
+
     /**
      * @see #ensure(Specification, String, Object)
      */
     public Result<T> ensure(Specification specification, String message) {
         return ensure(specification, message, null);
     }
+
 
 
     /**
@@ -157,6 +165,7 @@ public class Result<T> {
     }
 
 
+
     /**
      * Processes every specifications validation
      *
@@ -180,6 +189,7 @@ public class Result<T> {
     }
 
 
+
     /**
      * Combines Results from different entities or value objects
      *
@@ -198,6 +208,7 @@ public class Result<T> {
     }
 
 
+
     /**
      * Accepts domain entity or value object instance upon success
      *
@@ -214,6 +225,7 @@ public class Result<T> {
     }
 
 
+
     /**
      * Helper method to add single ErrorMessage
      *
@@ -226,6 +238,7 @@ public class Result<T> {
 
         this.errors.add(errorMessage);
     }
+
 
 
     /**
@@ -242,6 +255,7 @@ public class Result<T> {
     }
 
 
+
     /**
      * Helper method to set #ensureFaield field to {@literal true}
      *
@@ -250,6 +264,7 @@ public class Result<T> {
     private void ensureFailed() {
         this.ensureFailed = true;
     }
+
 
 
     /**
@@ -273,6 +288,7 @@ public class Result<T> {
             return new Validation(specification, new ErrorMessage(message, actualValue));
         }
     }
+
 
 
     /**
@@ -303,6 +319,7 @@ public class Result<T> {
         }
 
     }
+
 
 
     /**
