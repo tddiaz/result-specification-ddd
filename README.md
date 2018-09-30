@@ -10,10 +10,10 @@ Inspired by
 
       Result.resultFor(DomainEntity.class)
             .combine(result1, result2)
-            .ensure(() -> new SpecicationImpl().isSatisfied(), "some error message")
-            .ensure(() -> new SpecicationImpl().isSatisfied(), "some error message")
+            .ensure(() -> new SpecificationImpl().isSatisfied(), "some error message")
+            .ensure(() -> new SpecificationImpl().isSatisfied(), "some error message")
             .validateAll(
-                    validate(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
-                    validate(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue)),
-                    validate(() -> new SpecicationImpl().isSatisfied(), "some error message", actualValue))
+                    validate(() -> new SpecificationImpl().isSatisfied(), "some error message", actualValue)),
+                    validate(() -> new SpecificationImpl().isSatisfied(), "some error message", actualValue)),
+                    validate(() -> new SpecificationImpl().isSatisfied(), "some error message", actualValue))
             .onSuccess(() -> new DomainEntity());
