@@ -4,7 +4,7 @@ Created this POC project for the goal of having robust approach for consolidatin
 
 Inspired by 
 * Railway Oriented Programming 
-* Specification Pattern
+* Specification and Notification Pattern
 
 # Example
 
