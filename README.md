@@ -2,7 +2,7 @@
 
 Created this POC project for the goal of having robust approach for consolidating validation error messages of domain entities and value objects.
 
-Inspired by 
+Inspired from
 * Railway Oriented Programming 
 * Specification and Notification Pattern
 
